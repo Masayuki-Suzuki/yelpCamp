@@ -21,11 +21,11 @@ const webpackConfig = require("./webpack.config");
 
 var browserSync  = require('browser-sync');
 var reload        = browserSync.reload;
-var source = ["www/**/*"];
+var source = ["public/**/*"];
 var js = "assets/js/*.js";
-var ImgPass = "www/dist/img";
+var ImgPass = "public/dist/img";
 var bCss = "assets/build/css";
-var distJs = "www/dist/js";
+var distJs = "public/dist/js";
 
 gulp.task("sass", function() {
   var processors = [
@@ -62,7 +62,7 @@ gulp.task("webpackCss",function(){
 
 //Minify bundle.js
 gulp.task("uglify", function() {
-  gulp.src(["assets/bundle/bundle.js"])
+  gulp.src(["assets/bundle/*.js"])
     .pipe(plumber())
     .pipe(uglify())
     .pipe(gulp.dest(distJs))
@@ -100,6 +100,7 @@ gulp.task('server',['browserSync'],function() {
       if (/^SERVER\ HAS\ STARTED!!/.test(chunk)) {
         // Express の再起動が完了したら、reload() でBrowserSync に通知。
         // ※Express で出力する起動時のメッセージに合わせて比較文字列は修正
+        //gulp.task('sass');
         console.log('reloaded');
         reload();
       }
@@ -115,7 +116,7 @@ gulp.task('browserSync', function () {
   browserSync.init({
     files: ['public/**/*.*', 'views/**/*.*'],
     proxy: "http://localhost:3000",
-    port : "3000",
+    port : "4000",
     open: false
   });
   gulp.watch('assets/sass/**/*.scss', ['sass']);

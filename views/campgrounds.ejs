@@ -1,0 +1,13 @@
+<%- include('./header.ejs') %>
+<h1>This is Campgrounds Page</h1>
+<ul>
+
+<% campgrounds.forEach(function(campgrounds){ %>
+  <div>
+    <h4><%= campgrounds.name %></h4>
+    <img src="<%= campgrounds.image %>">
+  </div>
+<% });%>
+</ul>
+<a href="/">Top Page</a>
+<%- include('./footer.ejs') %>
