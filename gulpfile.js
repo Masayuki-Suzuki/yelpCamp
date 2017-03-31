@@ -10,7 +10,6 @@ var notify = require('gulp-notify');
 
 var postcss = require('gulp-postcss');
 //var cssnext = require('postcss-cssnext');
-//var mqpacker = require('css-mqpacker');
 var autoprefixer = require('autoprefixer');
 //var flexibility  = require('postcss-flexibility');
 
@@ -83,7 +82,7 @@ function reload() {
 
 gulp.task('server',['browserSync'],function() {
   nodemon({
-    script: './www/server/app.js',
+    script: 'app.js',
     ext: 'js html css',
     ignore: [
       'node_modules',
@@ -114,17 +113,17 @@ gulp.task('server',['browserSync'],function() {
 
 gulp.task('browserSync', function () {
   browserSync.init({
-    files: ['public/**/*.*', 'views/**/*.*', 'server/app.js'],
+    files: ['public/**/*.*', 'views/**/*.*'],
     proxy: "http://localhost:3000",
     port : "3000",
     open: false
   });
-  // gulp.watch('assets/sass/**/*.scss', ['sass']);
-  // gulp.watch(js,['webpackJs']);
-  // gulp.watch('assets/build/css/*.css',['webpackCss']);
-  // gulp.watch('assets/bundle/*.js', ['uglify']);
-  // gulp.watch('assets/img/**/*', ['imagemin']);
-  // gulp.watch(source, reload);
+  gulp.watch('assets/sass/**/*.scss', ['sass']);
+  gulp.watch(js,['webpackJs']);
+  gulp.watch('assets/build/css/*.css',['webpackCss']);
+  gulp.watch('assets/bundle/*.js', ['uglify']);
+  gulp.watch('assets/img/**/*', ['imagemin']);
+  gulp.watch(source, reload);
 });
 
 gulp.task("default", ["server"]);
