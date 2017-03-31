@@ -122,7 +122,7 @@ gulp.task('browserSync', function () {
   gulp.watch('assets/sass/**/*.scss', ['sass']);
   gulp.watch(js,['webpackJs']);
   gulp.watch('assets/build/css/*.css',['webpackCss']);
-  gulp.watch('assets/bundle/*.js', ['uglify']);
+  gulp.watch('assets/bundle/bundle.js', ['uglify']);
   gulp.watch('assets/img/**/*', ['imagemin']);
   gulp.watch(source, reload);
 });
