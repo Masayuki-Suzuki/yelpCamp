@@ -50,6 +50,7 @@
     "express": "^4.15.2",
     "font-awesome": "^4.7.0",
     "gulp-postcss": "^6.2.0",
+    "mongoose": "^4.9.2",
     "postcss-cssnext": "^2.8.0"
   }
 }

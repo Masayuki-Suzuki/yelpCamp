@@ -1,14 +1,38 @@
-const express = require('express');
-const app = express();
-const bodyParser = require('body-parser');
+const express       = require('express'),
+      app           = express(),
+      bodyParser    = require('body-parser'),
+      mongoose      = require('mongoose'),
+      port          = 3000,
+      ip            = '127.0.0.1';
 
-
+mongoose.connect('mongodb://localhost/yelpCamp');
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine','ejs');
 app.use(express.static('public'));
 
-const port = 3000;
-const ip = '127.0.0.1';
+//SCHEMA SETUP
+const campgroundSchema = new mongoose.Schema({
+  name : String,
+  image : String
+});
+
+var Campground = mongoose.model('Campground',campgroundSchema);
+
+Campground.create(
+  {
+    name: 'Granite Hill', image: 'https://farm3.staticflickr.com/2259/2182093741_164dc44a24.jpg'
+  } , (err, campground) => {
+  if(err){
+    console.log('It was Occarred some error. Should check some code....');
+    console.log(err);
+  } else {
+    console.log('NEWLY CREATED');
+    console.log(campground);
+  }
+});
+
+
+
 
 var campgrounds = [
   {name: 'Salmon Creek', image: 'https://farm3.staticflickr.com/2931/14128269785_f27fb630f3.jpg'},
