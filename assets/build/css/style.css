@@ -53,3 +53,28 @@ body {
   margin: 40px auto 0;
   padding: 10px 40px;
 }
+
+.thumbnail {
+  padding: 0;
+}
+
+.thumbnail img {
+  width: 100%;
+}
+
+.thumbnail .caption-full {
+  padding: 9px;
+}
+
+.price {
+  font-size: 12px;
+  margin: 10px 0 0;
+}
+
+h4 {
+  vertical-align: middle;
+}
+
+h4 .pull-right {
+  font-size: 14px;
+}

@@ -1,16 +1,18 @@
 <%- include('../partials/header') %>
 <article class="container">
-  <div class="row newBody">
-    <div class="col-lg-12 col-mg-12 col-sm-12">
-      <h1 class="addPageHeading">Create a New Campground</h1>
-      <form class="addCampground" action="/campgrounds" method="post">
-        <label>Author: </label>
-        <input class="form-control" type="text" name="comment[author]" placeholder="John Doe">
-        <label>Comment: </label>
-        <textarea class="form-control" name="comment[text]" placeholder="Great Campground!!">
-        <button class="btn bnt-large btn-primary" name="submit">Submit</button>
-      </form>
+    <div class="row newBody">
+        <div class="col-lg-12 col-mg-12 col-sm-12">
+            <h1 class="addPageHeading">Create a New Campground</h1>
+            <form class="addCampground" action="/campgrounds" method="post">
+                <label>Campground Name: </label>
+                <input class="form-control" type="text" name="name" placeholder="Grand Canyon">
+                <label>Image URL:</label>
+                <input class="form-control" type="text" name="image" placeholder="http://www.example.com/image/example.jpg">
+                <label>Description:</label>
+                <textarea class="form-control" name="desc" rows="8" cols="50"></textarea>
+                <button class="btn bnt-large btn-primary" name="submit">Submit</button>
+            </form>
+        </div>
     </div>
-  </div>
 </article>
 <%- include('../partials/footer') %>

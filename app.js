@@ -8,11 +8,12 @@ const express       = require('express'),
       port          = 3000,
       ip            = '127.0.0.1';
 
+seedDB();
 mongoose.connect('mongodb://localhost/yelpCamp');
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine','ejs');
-app.use(express.static('public'));
-seedDB();
+app.use(express.static(__dirname + '/public'));
+
 
 // Campground.create(
 //   {
@@ -81,15 +82,30 @@ app.get('/campgrounds/new', (req,res) => {
 
 app.get('/campgrounds/:id',(req,res) => {
   // Find the campground with provided ID
-  Campground.findById(req.params.id).populate('comment').exec(function(err, foundCampground){
+  Campground.findById(req.params.id).populate('comments').exec((err, foundCampground) => {
     if(err){
-      console.log('ERROR!!');
       console.log(err);
     } else {
+      console.log(foundCampground);
       res.render('campgrounds/show', {campground: foundCampground});
     }
   });
 });
+
+// // SHOW - shows more info about one campground
+// app.get("/campgrounds/:id", function(req, res){
+//   //find the campground with provided ID
+//   Campground.findById(req.params.id).populate("comments").exec(function(err, foundCampground){
+//     if(err){
+//       console.log(err);
+//     } else {
+//       console.log(foundCampground)
+//       //render show template with that campground
+//       res.render("campgrounds/show", {campground: foundCampground});
+//     }
+//   });
+// });
+
 
 //-------------------------
 // COMMENTS ROUTES
@@ -109,7 +125,7 @@ app.post('/campgrounds/:id/comments', (req,res) => {
   Campground.findById(req.params.id, (err,campground) => {
     if(err){
       console.log(err);
-      res.redirect("/campground")
+      res.redirect("/campgrounds")
     } else {
       Comment.create(req.body.comment, (err, comment) => {
         if(err){

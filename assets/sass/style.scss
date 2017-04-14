@@ -43,3 +43,26 @@ body{
     padding: 10px 40px;
   }
 }
+
+.thumbnail{
+  padding:0;
+  img{
+    width: 100%;
+  }
+
+  .caption-full{
+    padding:9px;
+  }
+}
+
+.price{
+  font-size: 12px;
+  margin: 10px 0 0;
+}
+
+h4{
+  vertical-align: middle;
+  .pull-right{
+    font-size: 14px;
+  }
+}
