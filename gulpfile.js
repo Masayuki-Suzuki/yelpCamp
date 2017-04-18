@@ -117,7 +117,8 @@ gulp.task('browserSync', function () {
     files: ['public/**/*.*', 'views/**/*.*'],
     proxy: "http://localhost:3000",
     port : "4000",
-    open: false
+    open: false,
+    notify: false
   });
   gulp.watch('assets/sass/**/*.scss', ['sass']);
   gulp.watch(js,['webpackJs']);

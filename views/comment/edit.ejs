@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+<article class="container">
+    <div class="row newBody">
+        <div class="col-lg-12 col-mg-12 col-sm-12">
+            <h1 class="addPageHeading">Edit Comment to <%#= campground.name%></h1>
+            <form class="addCampground" action="/campgrounds/<%= campground_id %>/comments/<%= comment._id %>?_method=PUT" method="post">
+                <label>Comment: </label>
+                <textarea rows="8" cols="50" class="form-control" name="comment[text]" ><%= comment.text%></textarea>
+                <button class="btn bnt-large btn-primary" name="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+</article>
+<%- include('../partials/footer') %>

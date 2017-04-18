@@ -4,6 +4,10 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+p {
+  word-wrap: break-word;
+}
+
 .row {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -77,4 +81,8 @@ h4 {
 
 h4 .pull-right {
   font-size: 14px;
+}
+
+.deleteForm {
+  display: inline-block;
 }
