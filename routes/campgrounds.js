@@ -19,11 +19,12 @@ router.post('/', middleware.isLoggedIn, (req,res) => {
   let name = req.body.name;
   let image = req.body.image;
   let desc = req.body.desc;
+  let price = req.body.price;
   let author = {
     id: req.user._id,
     username: req.user.username
   };
-  let newCampground = { name: name, image: image, description: desc, author:author};
+  let newCampground = { name: name, image: image, price: price, description: desc, author:author};
   Campground.create(newCampground, (err, newlyCreated) => {
     if(err){
       console.log(err);

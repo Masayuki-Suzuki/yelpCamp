@@ -20,10 +20,11 @@ router.post('/register', (req, res) => {
   const newUser = new User({username: req.body.username})
   User.register(newUser, req.body.password, (err, user) => {
     if(err){
-      console.log(err);
-      return res.render('register');
+      req.flash('error', err.message);
+      return res.redirect('/register');
     }
     passport.authenticate('local')(req,res, () => {
+      req.flash('success','Welcome to YelpCamp ' + user.username);
       res.redirect('/campgrounds');
     });
   });
@@ -37,6 +38,7 @@ router.get('/login', (req, res) => {
 // Logic logout route
 router.get('/logout', (req,res) => {
   req.logout();
+  req.flash('success','Logged you out');
   res.redirect('/campgrounds');
 })
 
@@ -44,7 +46,9 @@ router.get('/logout', (req,res) => {
 // app.post('ROUTE',Middleware, Callback);
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/campgrounds',
-  failureRedirect: '/login'
+  successFlash: 'Welcome back to YelpCamp!!',
+  failureRedirect: '/login',
+  failureFlash: 'Failed!! Username or Password is wrong...'
 }), (req, res) => {});
 
 module.exports = router;

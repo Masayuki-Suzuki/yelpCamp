@@ -100,8 +100,6 @@ gulp.task('server',['browserSync'],function() {
       if (/^SERVER\ HAS\ STARTED!!/.test(chunk)) {
         // Express の再起動が完了したら、reload() でBrowserSync に通知。
         // ※Express で出力する起動時のメッセージに合わせて比較文字列は修正
-        //gulp.task('sass');
-        console.log('reloaded');
         reload();
       }
       process.stdout.write(chunk);

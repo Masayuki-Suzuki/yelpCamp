@@ -10,3 +10,11 @@
 .idea/workspace.xml
 
 .idea/yelpCamp.iml
+
+*.xml
+
+.idea/blade.xml
+
+.idea/codeStyleSettings.xml
+
+colt-app.js

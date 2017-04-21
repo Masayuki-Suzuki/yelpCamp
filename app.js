@@ -5,6 +5,7 @@ const express         = require('express'),
       passport        = require('passport'),
       LocalStrategy   = require('passport-local'),
       methodOverride  = require('method-override'),
+      flash           = require('connect-flash'),
       User            = require('./models/user'),
       seedDB          = require('./seeds'),
       port            = 3000,
@@ -30,15 +31,18 @@ app.use(require('express-session')({
   secret: 'Once again Curry wins most yummy food',
   resave: false,
   saveUninitialized: false
-}))
+}));
+
 app.use(passport.initialize());
 app.use(passport.session());
-
 passport.use(new LocalStrategy(User.authenticate()));
 passport.serializeUser(User.serializeUser());
 passport.deserializeUser(User.deserializeUser());
 
+app.use(flash());
 app.use((req, res, next) => {
+  res.locals.ERROR_MESSAGE = req.flash("error");
+  res.locals.SUCCESS_MESSAGE = req.flash("success");
   res.locals.currentUser = req.user;
   next();
 });
