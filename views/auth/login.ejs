@@ -1,11 +1,15 @@
 <%- include('../partials/header') %>
-  <article>
-    <h1>Login</h1>
-    <form action="/login" method="POST">
-      <input type="text" name="username" placeholder="username">
-      <input type="password" name="password" placeholder="password">
-      <button>Login</button>
-    </form>
-    <a href="/">Top Page</a>
+  <article class="container">
+    <div class="row newBody">
+      <div class="col-lg-12 col-mg-12 col-sm-12">
+        <h1 class="addPageHeading">Login</h1>
+        <form class="addCampground" action="/login" method="POST">
+          <input class="form-control" type="text" name="username" placeholder="username">
+          <input class="form-control" type="password" name="password" placeholder="password">
+          <button class="btn bnt-large btn-primary">Login</button>
+        </form>
+      </div>
+      <a href="/">Top Page</a>
+    </div>
   </article>
 <%- include('../partials/footer') %>

@@ -33,7 +33,7 @@ middlewareObj.checkComment = (req, res, next) => {
         req.flash('error','Oops!! Sorry,Campground not found...');
         res.redirect('back');
       } else {
-        // does user own the comment?
+        //does user own the comment?
         if(foundComment.author.id.equals(req.user._id)){
           next();
         } else {
